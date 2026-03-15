@@ -1,0 +1,18 @@
+title: Le 3 Cordes
+description: Association culturelle organisant des concerts et événements culturels à Beaumont et dans la région
+baseurl: ""
+url: "https://le3cordes.github.io"
+lang: fr
+
+# GitHub Pages safe plugins
+plugins: []
+
+# Exclude development files from build output
+exclude:
+  - docker-compose.yml
+  - CLAUDE.md
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - .git
+  - .gitignore

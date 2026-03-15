@@ -1,0 +1,20 @@
+<section id="galerie" class="gallery-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title" data-i18n="galleryTitle">Galerie</h2>
+            <p class="section-subtitle" data-i18n="gallerySubtitle">Quelques moments de nos événements passés</p>
+        </div>
+
+        <div class="gallery-grid">
+            {% for item in site.data.gallery %}
+            <div class="gallery-item">
+                {% if item.image %}
+                <img src="{{ item.image | relative_url }}" alt="{{ item.alt }}">
+                {% else %}
+                <div class="gallery-placeholder">{{ item.icon }}</div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
