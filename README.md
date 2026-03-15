@@ -1,13 +1,17 @@
-# Le 3 Corde - ASBL Culturelle
+# Le 3 Cordes - ASBL Culturelle
 
-Website for Le 3 Corde, a cultural association organizing concerts and cultural events in Beaumont, Belgium.
+Website for Le 3 Cordes, a cultural association organizing concerts and cultural events in Beaumont, Belgium.
+
+Built with Jekyll for GitHub Pages. Live at **https://le3cordes.github.io**
 
 ## 🌐 Multilingual Website
 
-This website is available in three languages:
-- **French** (Primary): [index.html](index.html)
-- **English**: [index-en.html](index-en.html)
-- **Flemish/Dutch**: [index-nl.html](index-nl.html)
+This website is available in three languages via a JavaScript language switcher:
+- **French** (Primary)
+- **English**
+- **Flemish/Dutch**
+
+Language preference is saved to browser storage and the Facebook widget updates accordingly.
 
 ## 🎨 Design & Color Palette
 
@@ -16,7 +20,7 @@ The website features an artistic design with a sophisticated color palette:
 - **Primary Burgundy** (#8B2635) - Cultural elegance
 - **Secondary Gold** (#D4AF37) - Artistic warmth
 - **Tertiary Teal** (#2C5F6F) - Sophisticated depth
-- **Neutral Cream** (#FAF7F2) - Warm background
+- **Neutral Dark** (#0a0a0a) - Black background
 - **Accent Coral** (#E27D60) - Vibrant highlights
 
 ### Typography
@@ -26,66 +30,117 @@ The website features an artistic design with a sophisticated color palette:
 ## 📁 File Structure
 
 ```
-/
-├── index.html          # French version (primary)
-├── index-en.html       # English version
-├── index-nl.html       # Flemish/Dutch version
+le3cordes/
+├── _config.yml                # Jekyll configuration
+├── Gemfile                    # Ruby dependencies (github-pages)
+├── index.md                   # Main page (front matter only)
+├── _layouts/
+│   └── default.html           # Main HTML template with Liquid includes
+├── _includes/                 # Modular section components
+│   ├── nav.html               # Navigation bar
+│   ├── hero.html              # Hero section
+│   ├── events.html            # Events / Facebook widget
+│   ├── about.html             # About section
+│   ├── gallery.html           # Photo gallery
+│   └── contact.html           # Contact information
+├── _data/                     # Editable content files
+│   ├── gallery.yml            # Gallery items
+│   ├── contact.yml            # Address, email, regions
+│   └── site_meta.yml          # Facebook URLs
+├── assets/
+│   └── images/                # Gallery photos
 ├── styles/
-│   └── style.css       # Global stylesheet with color palette
-├── CLAUDE.md           # Project instructions
-└── README.md           # This file
+│   └── style.css              # Global stylesheet
+├── scripts/
+│   ├── translations.js        # Text content in 3 languages
+│   └── main.js                # Language switcher, animations
+└── CLAUDE.md                  # Project instructions
 ```
 
 ## 🚀 GitHub Pages Deployment
 
-This is a static website hosted on GitHub Pages.
+This is a Jekyll site hosted on GitHub Pages at `le3cordes.github.io`.
 
-### Deploy Steps:
+### Automatic Deployment:
 
-1. Push changes to your GitHub repository
-2. Go to **Settings → Pages**
-3. Select "Deploy from a branch"
-4. Choose the `main` branch
-5. Your site will be live at `https://yourusername.github.io/le3corde/`
+1. Push changes to the `main` branch
+2. GitHub Actions automatically builds and deploys via Jekyll
+3. Your site updates within seconds at **https://le3cordes.github.io**
+
+No settings changes needed—GitHub Pages detects the `Gemfile` and builds automatically.
 
 ## 📝 Content Sections
 
-Each language version includes:
+The single-page site includes:
 
-1. **Hero Section** - Main introduction with call-to-action buttons
-2. **Events Section** - Showcase upcoming concerts and cultural events
-3. **About Section** - Information about the association and mission
-4. **Gallery** - Photo gallery of past events
-5. **Contact Section** - Contact form and location details
+1. **Navigation** - Sticky header with language switcher (FR/EN/NL)
+2. **Hero Section** - Main introduction with call-to-action buttons
+3. **Events Section** - Embedded Facebook Page widget showing events & timeline
+4. **About Section** - Association info and mission statement
+5. **Gallery** - Photo gallery of past events (emoji placeholders, add real images)
+6. **Contact Section** - Address, email, and service regions
+7. **Footer** - Navigation links and copyright
 
 ### Regions Served
 
-The association serves Beaumont and surrounding areas including:
-Sivry-Rance, Chimay, Froidchapelle, Momignies, Thuin, Ham-sur-Heure-Nalinnes, Philippeville, Couvin, Walcourt, Merbes-le-Château, Rance, Rièzes, Sautin, Solre-Saint-Géry, and Grandrieu.
+Beaumont, Sivry-Rance, Chimay, Froidchapelle, Momignies, Thuin, Ham-sur-Heure-Nalinnes, Philippeville, Couvin, Walcourt, Merbes-le-Château, Rance, Rièzes, Sautin, Solre-Saint-Géry, Grandrieu.
 
-## 🎯 Location
+## 🎯 Location & Contact
 
-**Le 3 Corde ASBL**
+**Le 3 Cordes ASBL**
 Rue Grand Place 28
 6500 Beaumont
 Belgium
 
-Email: info@le3corde.be
+📧 Email: letroiscordes@outlook.com
+📱 Facebook: [Le 3 Cordes](https://www.facebook.com/profile.php?id=61570921900536)
 
-## ✏️ Customization
+## ✏️ Editing Content
 
-### Adding Real Content
+### Edit Text Content
 
-Currently, the website uses Lorem Ipsum placeholder text. To add real content:
+Text content (headings, descriptions, labels) is stored in [scripts/translations.js](scripts/translations.js) in three languages:
 
-1. Open the HTML file for the language you want to edit
-2. Replace Lorem Ipsum text with actual content
-3. Update event dates, titles, and descriptions
-4. Add real images to the gallery section
+```javascript
+const translations = {
+  fr: { navHome: "Accueil", ... },
+  en: { navHome: "Home", ... },
+  nl: { navHome: "Startpagina", ... }
+}
+```
 
-### Modifying Colors
+The JavaScript language switcher automatically swaps text based on user selection.
 
-To change the color palette, edit the CSS variables in [styles/style.css](styles/style.css):
+### Edit Gallery
+
+Edit [`_data/gallery.yml`](_data/gallery.yml) to add or update gallery items:
+
+```yaml
+- icon: "🎸"
+  alt: "Guitar concert"
+  image: "assets/images/concert-1.jpg"  # Add when you have photos
+```
+
+Currently uses emoji placeholders. Add real photos by:
+1. Upload JPG/PNG to `assets/images/`
+2. Add `image: "assets/images/filename.jpg"` to the gallery item
+3. The template will display the photo instead of the emoji
+
+### Edit Contact Info
+
+Update [`_data/contact.yml`](_data/contact.yml) to change address, email, or service regions.
+
+### Edit Facebook Widget
+
+Update the Facebook Page URL in [`_data/site_meta.yml`](_data/site_meta.yml):
+
+```yaml
+facebook_page_url: "https://www.facebook.com/profile.php?id=61570921900536&sk=about"
+```
+
+### Modify Colors
+
+Edit CSS variables in [styles/style.css](styles/style.css):
 
 ```css
 :root {
@@ -95,6 +150,26 @@ To change the color palette, edit the CSS variables in [styles/style.css](styles
     /* ... and more */
 }
 ```
+
+## 🏗️ Local Development
+
+### Prerequisites
+- Ruby 3.0+
+
+### Setup
+
+```bash
+# Install dependencies
+gem install github-pages
+
+# Build the site
+jekyll build
+
+# Serve locally at http://localhost:4000
+jekyll serve
+```
+
+The `github-pages` gem ensures your local build matches GitHub Pages exactly.
 
 ## 📱 Responsive Design
 
